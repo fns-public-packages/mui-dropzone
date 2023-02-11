@@ -6,13 +6,13 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import {Fragment} from 'react';
+import { Fragment } from 'react';
 import Dropzone from 'react-dropzone';
-import {convertBytesToMbsOrKbs, isImage, readFile} from '../helpers';
+import { convertBytesToMbsOrKbs, isImage, readFile } from '../helpers';
 import PreviewList from './PreviewList';
 import SnackbarContentWrapper from './SnackbarContentWrapper';
 
-const styles = ({palette, shape, spacing}) => ({
+const styles = ({ palette, shape, spacing }) => ({
     '@keyframes progress': {
         '0%': {
             backgroundPosition: '0 0',
@@ -88,15 +88,15 @@ class DropzoneAreaBase extends React.PureComponent {
     };
 
     notifyAlert() {
-        const {onAlert} = this.props;
-        const {openSnackBar, snackbarMessage, snackbarVariant} = this.state;
+        const { onAlert } = this.props;
+        const { openSnackBar, snackbarMessage, snackbarVariant } = this.state;
         if (openSnackBar && onAlert) {
             onAlert(snackbarMessage, snackbarVariant);
         }
     }
 
-    handleDropAccepted = async(acceptedFiles, evt) => {
-        const {fileObjects, filesLimit, getFileAddedMessage, getFileLimitExceedMessage, onAdd, onDrop} = this.props;
+    handleDropAccepted = async (acceptedFiles, evt) => {
+        const { fileObjects, filesLimit, getFileAddedMessage, getFileLimitExceedMessage, onAdd, onDrop } = this.props;
 
         if (filesLimit > 1 && fileObjects.length + acceptedFiles.length > filesLimit) {
             this.setState({
@@ -114,7 +114,7 @@ class DropzoneAreaBase extends React.PureComponent {
 
         // Retrieve fileObjects data
         const fileObjs = await Promise.all(
-            acceptedFiles.map(async(file) => {
+            acceptedFiles.map(async (file) => {
                 const data = await readFile(file);
                 return {
                     file,
@@ -171,7 +171,7 @@ class DropzoneAreaBase extends React.PureComponent {
     handleRemove = (fileIndex) => (event) => {
         event.stopPropagation();
 
-        const {fileObjects, getFileRemovedMessage, onDelete} = this.props;
+        const { fileObjects, getFileRemovedMessage, onDelete } = this.props;
 
         // Find removed fileObject
         const removedFileObj = fileObjects[fileIndex];
@@ -221,7 +221,7 @@ class DropzoneAreaBase extends React.PureComponent {
             showPreviewsInDropzone,
             useChipsForPreview,
         } = this.props;
-        const {openSnackBar, snackbarMessage, snackbarVariant} = this.state;
+        const { openSnackBar, snackbarMessage, snackbarVariant } = this.state;
 
         const acceptFiles = acceptedFiles?.join(',');
         const isMultiple = filesLimit > 1;
@@ -238,7 +238,7 @@ class DropzoneAreaBase extends React.PureComponent {
                     maxSize={maxFileSize}
                     multiple={isMultiple}
                 >
-                    {({getRootProps, getInputProps, isDragActive, isDragReject}) => (
+                    {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
                         <div
                             {...getRootProps({
                                 className: clsx(
@@ -327,8 +327,8 @@ DropzoneAreaBase.defaultProps = {
     filesLimit: 3,
     fileObjects: [],
     maxFileSize: 3000000,
-    dropzoneText: 'Drag and drop a file here or click',
-    previewText: 'Preview:',
+    dropzoneText: 'Dateien ablegen. um sie hochzuladen oder klicken Sie hier, um Dateien auszuwählen.',
+    previewText: 'Vorschau:',
     disableRejectionFeedback: false,
     showPreviews: false, // By default previews show up under in the dialog and inside in the standalone
     showPreviewsInDropzone: true,
@@ -346,17 +346,17 @@ DropzoneAreaBase.defaultProps = {
         },
         autoHideDuration: 6000,
     },
-    getFileLimitExceedMessage: (filesLimit) => (`Maximum allowed number of files exceeded. Only ${filesLimit} allowed`),
-    getFileAddedMessage: (fileName) => (`File ${fileName} successfully added.`),
+    getFileLimitExceedMessage: (filesLimit) => (`Maximale Anzahl von Dateien überschritten. Es sind nur ${filesLimit} erlaubt.`),
+    getFileAddedMessage: (fileName) => (`Datei ${fileName} hinizugefügt.`),
     getPreviewIcon: defaultGetPreviewIcon,
-    getFileRemovedMessage: (fileName) => (`File ${fileName} removed.`),
+    getFileRemovedMessage: (fileName) => (`Datei ${fileName} entfernt.`),
     getDropRejectMessage: (rejectedFile, acceptedFiles, maxFileSize) => {
-        let message = `File ${rejectedFile.name} was rejected. `;
+        let message = `Datei ${rejectedFile.name} wurde abgelehnt. `;
         if (!acceptedFiles.includes(rejectedFile.type)) {
-            message += 'File type not supported. ';
+            message += 'Dateityp wird nicht unterstützt. ';
         }
         if (rejectedFile.size > maxFileSize) {
-            message += 'File is too big. Size limit is ' + convertBytesToMbsOrKbs(maxFileSize) + '. ';
+            message += 'Datei ist zu groß. Maximale Größe: ' + convertBytesToMbsOrKbs(maxFileSize) + '. ';
         }
         return message;
     },
@@ -531,4 +531,4 @@ DropzoneAreaBase.propTypes = {
     onAlert: PropTypes.func,
 };
 
-export default withStyles(styles, {name: 'MuiDropzoneArea'})(DropzoneAreaBase);
+export default withStyles(styles, { name: 'MuiDropzoneArea' })(DropzoneAreaBase);

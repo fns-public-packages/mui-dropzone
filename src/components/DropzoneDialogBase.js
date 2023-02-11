@@ -101,12 +101,12 @@ class DropzoneDialogBase extends React.PureComponent {
 
 DropzoneDialogBase.defaultProps = {
     open: false,
-    dialogTitle: 'Upload file',
+    dialogTitle: 'Dateien hochladen',
     dialogProps: {},
     fullWidth: true,
     maxWidth: 'sm',
-    cancelButtonText: 'Cancel',
-    submitButtonText: 'Submit',
+    cancelButtonText: 'Abbrechen',
+    submitButtonText: 'Hochladen',
     showPreviews: true,
     showPreviewsInDropzone: false,
     showFileNamesInPreview: true,

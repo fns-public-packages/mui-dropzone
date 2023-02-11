@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-const styles = ({palette, shape, spacing}) => ({
+const styles = ({ palette, shape, spacing }) => ({
     root: {},
     imageContainer: {
         position: 'relative',
@@ -114,7 +114,7 @@ function PreviewList({
 
                         <Fab
                             onClick={handleRemove(i)}
-                            aria-label="Delete"
+                            aria-label="Löschen"
                             className={classes.removeButton}
                         >
                             <DeleteIcon />
@@ -138,4 +138,4 @@ PreviewList.propTypes = {
     useChipsForPreview: PropTypes.bool,
 };
 
-export default withStyles(styles, {name: 'MuiDropzonePreviewList'})(PreviewList);
+export default withStyles(styles, { name: 'MuiDropzonePreviewList' })(PreviewList);
