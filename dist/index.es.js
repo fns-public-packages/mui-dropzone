@@ -686,7 +686,7 @@ DropzoneAreaBase.defaultProps = {
   filesLimit: 3,
   fileObjects: [],
   maxFileSize: 3000000,
-  dropzoneText: 'Dateien ablegen. um sie hochzuladen oder klicken Sie hier, um Dateien auszuwählen.',
+  dropzoneText: 'Dateien ablegen, um sie hochzuladen oder klicken Sie hier, um Dateien auszuwählen.',
   previewText: 'Vorschau:',
   disableRejectionFeedback: false,
   showPreviews: false,
@@ -710,7 +710,7 @@ DropzoneAreaBase.defaultProps = {
     return "Maximale Anzahl von Dateien \xFCberschritten. Es sind nur ".concat(filesLimit, " erlaubt.");
   },
   getFileAddedMessage: function getFileAddedMessage(fileName) {
-    return "Datei ".concat(fileName, " hinizugef\xFCgt.");
+    return "Datei ".concat(fileName, " hinzugef\xFCgt.");
   },
   getPreviewIcon: defaultGetPreviewIcon,
   getFileRemovedMessage: function getFileRemovedMessage(fileName) {
