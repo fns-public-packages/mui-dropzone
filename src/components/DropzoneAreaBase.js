@@ -327,7 +327,7 @@ DropzoneAreaBase.defaultProps = {
     filesLimit: 3,
     fileObjects: [],
     maxFileSize: 3000000,
-    dropzoneText: 'Dateien ablegen. um sie hochzuladen oder klicken Sie hier, um Dateien auszuwählen.',
+    dropzoneText: 'Dateien ablegen, um sie hochzuladen oder klicken Sie hier, um Dateien auszuwählen.',
     previewText: 'Vorschau:',
     disableRejectionFeedback: false,
     showPreviews: false, // By default previews show up under in the dialog and inside in the standalone
@@ -347,7 +347,7 @@ DropzoneAreaBase.defaultProps = {
         autoHideDuration: 6000,
     },
     getFileLimitExceedMessage: (filesLimit) => (`Maximale Anzahl von Dateien überschritten. Es sind nur ${filesLimit} erlaubt.`),
-    getFileAddedMessage: (fileName) => (`Datei ${fileName} hinizugefügt.`),
+    getFileAddedMessage: (fileName) => (`Datei ${fileName} hinzugefügt.`),
     getPreviewIcon: defaultGetPreviewIcon,
     getFileRemovedMessage: (fileName) => (`Datei ${fileName} entfernt.`),
     getDropRejectMessage: (rejectedFile, acceptedFiles, maxFileSize) => {
